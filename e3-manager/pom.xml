@@ -14,7 +14,7 @@
 		<module>e3-manager-pojo</module>
 		<module>e3-manager-dao</module>
 		<module>e3-manager-service</module>
-		<module>e3-manager-web</module>
+		<module>e3-manager-interface</module>
 	</modules>
 	<!-- 后台系统聚合父工程: 
 	1,聚合管理子工程(统一启动,打包,部署) 

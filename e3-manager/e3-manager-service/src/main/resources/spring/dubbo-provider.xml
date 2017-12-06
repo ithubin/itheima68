@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://code.alibabatech.com/schema/dubbo
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	<!-- 定义dubbo服务名称,此名称可以自定义,用于监控中心监控服务关系 -->
+	<dubbo:application name="manager-service" />
+	
+	<!-- 使用dubbo通过Zookeeper协议注册服务 -->
+	<dubbo:registry protocol="zookeeper" address="192.168.66.66:2181" />
+	
+	<!-- 用dubbo协议在20880端口暴露服务 -->
+	<dubbo:protocol name="dubbo" port="20880" />
+	
+	<!-- 声明需要暴露的服务接口 -->
+	<!-- 创建需要发布对象 -->
+	<bean id="itemServiceImpl" class="cn.e3.manager.service.impl.ItemServiceImpl"></bean>
+	<!-- 发布服务 -->
+	<dubbo:service interface="cn.e3.manager.service.ItemService"
+		ref="itemServiceImpl" />
+
+</beans>
