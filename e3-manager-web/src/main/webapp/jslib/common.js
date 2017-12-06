@@ -105,6 +105,7 @@ var E3= E3MALL = {
     // 初始化选择类目组件
     initItemCat : function(data){
     	$(".selectItemCat").each(function(i,e){
+    		//a标签对象
     		var _ele = $(e);
     		if(data && data.cid){
     			_ele.after("<span style='margin-left:10px;'>"+data.cid+"</span>");
